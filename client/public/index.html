@@ -2,11 +2,61 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SP Coaching Center – Sagara</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#1b4fce" />
+    <meta name="description" content="SP Coaching Center – SSLC Kannada, CBSE Kannada, Spoken English, Competitive Prep. S.N Nagar, Sagara." />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="SP Coaching" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <title>SP Coaching Center</title>
+    <style>
+      #splash {
+        position:fixed;inset:0;z-index:9999;
+        background:linear-gradient(160deg,#1340b0,#1b4fce 50%,#0ea5e9);
+        display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;
+        transition:opacity 0.5s ease;
+      }
+      #splash.hide{opacity:0;pointer-events:none;}
+      .sp-logo{
+        width:88px;height:88px;background:rgba(255,255,255,.2);
+        border:3px solid rgba(255,255,255,.4);border-radius:24px;
+        display:flex;align-items:center;justify-content:center;
+        font-size:34px;font-weight:900;color:#fff;font-family:Georgia,serif;
+        box-shadow:0 12px 40px rgba(0,0,0,.3);
+        animation:spulse 1.5s ease-in-out infinite;
+      }
+      .sp-name{font-size:22px;font-weight:800;color:#fff;font-family:Georgia,serif;}
+      .sp-loc{font-size:13px;color:rgba(255,255,255,.75);font-family:sans-serif;}
+      .sp-bar{width:180px;height:4px;background:rgba(255,255,255,.2);border-radius:4px;overflow:hidden;}
+      .sp-fill{height:100%;width:0%;background:#fff;border-radius:4px;animation:sload 2s ease forwards;}
+      @keyframes spulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+      @keyframes sload{0%{width:0%}100%{width:100%}}
+    </style>
   </head>
   <body>
+    <div id="splash">
+      <div class="sp-logo">SP</div>
+      <div class="sp-name">SP Coaching Center</div>
+      <div class="sp-loc">S.N Nagar, Sagara, Karnataka</div>
+      <div class="sp-bar"><div class="sp-fill"></div></div>
+    </div>
     <noscript>Enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script>
+      if('serviceWorker' in navigator){
+        window.addEventListener('load',()=>{
+          navigator.serviceWorker.register('/sw.js').catch(()=>{});
+        });
+      }
+      window.addEventListener('load',()=>{
+        setTimeout(()=>{
+          const s=document.getElementById('splash');
+          if(s){s.classList.add('hide');setTimeout(()=>s.remove(),500);}
+        },2000);
+      });
+    </script>
   </body>
 </html>

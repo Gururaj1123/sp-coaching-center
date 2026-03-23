@@ -1,0 +1,18 @@
+{
+  "short_name": "SP Coaching",
+  "name": "SP Coaching Center – Sagara",
+  "description": "SP Coaching Center – SSLC Kannada, CBSE Kannada, Spoken English, Competitive Prep",
+  "icons": [
+    { "src": "favicon.ico", "sizes": "64x64", "type": "image/x-icon" },
+    { "src": "logo192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "logo512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#1b4fce",
+  "background_color": "#f0f7ff",
+  "orientation": "portrait",
+  "scope": "/",
+  "categories": ["education"],
+  "lang": "en"
+}

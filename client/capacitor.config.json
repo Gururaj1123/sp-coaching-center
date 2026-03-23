@@ -1,0 +1,22 @@
+{
+  "appId": "com.spcoaching.center",
+  "appName": "SP Coaching Center",
+  "webDir": "build",
+  "server": {
+    "androidScheme": "https",
+    "url": "https://sp-coaching-center.vercel.app",
+    "cleartext": true
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "launchAutoHide": true,
+      "backgroundColor": "#1b4fce",
+      "showSpinner": false
+    },
+    "StatusBar": {
+      "style": "LIGHT",
+      "backgroundColor": "#1b4fce"
+    }
+  }
+}
