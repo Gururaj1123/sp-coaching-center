@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: sp-coaching-server
+    env: node
+    region: singapore
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: JWT_SECRET
+        value: sp_coaching_sagara_super_secret_2024
+      - key: NODE_ENV
+        value: production
+      - key: RENDER
+        value: true

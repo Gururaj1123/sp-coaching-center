@@ -1,0 +1,110 @@
+╔══════════════════════════════════════════════════════════════════╗
+║             SP COACHING CENTER – SETUP & RUN GUIDE              ║
+║                   S.N Nagar, Sagara, Karnataka                  ║
+╚══════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 1: EXTRACT ZIP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Right-click SP-COACHING-CENTER.zip → Extract All
+  Open extracted folder in VS Code
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 2: OPEN TWO TERMINALS IN VS CODE  (Ctrl + `)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ┌─────────────────── TERMINAL 1 (SERVER) ───────────────────┐
+  │                                                           │
+  │   cd server                                               │
+  │   npm install                                             │
+  │   npm run dev                                             │
+  │                                                           │
+  │   ✅ You will see:                                         │
+  │   SP COACHING CENTER - SERVER READY                       │
+  │   Running at http://localhost:5000                        │
+  │                                                           │
+  └───────────────────────────────────────────────────────────┘
+
+  ┌─────────────────── TERMINAL 2 (CLIENT) ───────────────────┐
+  │                                                           │
+  │   cd client                                               │
+  │   npm install                                             │
+  │   npm start                                               │
+  │                                                           │
+  │   ✅ Browser opens automatically at http://localhost:3000  │
+  │                                                           │
+  └───────────────────────────────────────────────────────────┘
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 3: OPEN IN BROWSER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  → http://localhost:3000       (Landing Page)
+  → http://localhost:3000/login (Login Page)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TEACHER LOGINS (Pre-created automatically)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Email                        Password    Access
+  ─────────────────────────────────────────────────────
+  admin@spcoaching.com          admin123    All Courses
+  sslc@spcoaching.com           sslc123     SSLC Kannada
+  cbse@spcoaching.com           cbse123     CBSE Kannada
+  english@spcoaching.com        english123  Spoken English
+  comp@spcoaching.com           comp123     Competitive Prep
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STUDENT LOGINS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Teachers must ADD students from their dashboard.
+  Go to: Teacher Dashboard → Students → Add Student
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FEATURES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  TEACHER DASHBOARD:
+  ✅ Overview with live stats
+  ✅ Add / Remove Students
+  ✅ Upload PDF Notes (per course)
+  ✅ Post Announcements with templates
+     (Today's class, Cancelled, Test, Holiday, etc.)
+  ✅ View & Reply to Student Suggestions
+
+  STUDENT DASHBOARD:
+  ✅ Home overview with urgent notices
+  ✅ View Announcements from teacher
+  ✅ Download Study Notes (PDF)
+  ✅ Send Suggestions to Teacher
+     (Quick buttons: Today's class?, Cancelled?, Extra class?, etc.)
+  ✅ Track replies from teacher
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+COMMON ERRORS & FIXES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ❌ Port 5000 in use:
+     Open server/index.js → change PORT = 5000 to PORT = 5001
+     Open client/package.json → change "proxy" to "http://localhost:5001"
+
+  ❌ node not found:
+     Download Node.js LTS from https://nodejs.org
+
+  ❌ npm install fails:
+     Try running terminal as Administrator (right-click → Run as admin)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROJECT STRUCTURE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SP-COACHING-CENTER/
+  ├── server/
+  │   ├── index.js          ← Express API + SQLite DB
+  │   ├── uploads/          ← PDF files stored here
+  │   └── spcoaching.db     ← Auto-created database
+  └── client/
+      └── src/
+          ├── pages/        ← Welcome, Login, Dashboards
+          └── components/
+              ├── teacher/  ← Overview, Students, Notes,
+              │               Announcements, Suggestions
+              └── student/  ← Overview, Notes,
+                              Announcements, Suggestions
+
+© SP Coaching Center, S.N Nagar, Sagara, Karnataka

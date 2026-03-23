@@ -1,0 +1,161 @@
+╔══════════════════════════════════════════════════════════════════╗
+║         SP COACHING CENTER – DEPLOY TO RENDER + VERCEL          ║
+╚══════════════════════════════════════════════════════════════════╝
+
+You will deploy:
+  Backend (server) → Render.com   (free)
+  Frontend (client) → Vercel.com  (free)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PART 1 — PUSH CODE TO GITHUB
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Go to https://github.com → Sign in (or create free account)
+
+2. Click the "+" button → "New repository"
+   Name: sp-coaching-center
+   Visibility: Public
+   Click: "Create repository"
+
+3. Open VS Code Terminal in your SP-COACHING-CENTER folder:
+
+   git init
+   git add .
+   git commit -m "SP Coaching Center - initial commit"
+   git branch -M main
+   git remote add origin https://github.com/YOUR_USERNAME/sp-coaching-center.git
+   git push -u origin main
+
+   (Replace YOUR_USERNAME with your GitHub username)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PART 2 — DEPLOY BACKEND TO RENDER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Go to https://render.com → Sign in with GitHub
+
+2. Click "New +" → "Web Service"
+
+3. Connect your GitHub repo: sp-coaching-center
+   Click "Connect"
+
+4. Fill in these settings:
+   ┌─────────────────────────────────────────────┐
+   │ Name:          sp-coaching-server           │
+   │ Region:        Singapore (closest to India) │
+   │ Branch:        main                         │
+   │ Root Directory: server                      │
+   │ Runtime:       Node                         │
+   │ Build Command: npm install                  │
+   │ Start Command: npm start                    │
+   │ Instance Type: Free                         │
+   └─────────────────────────────────────────────┘
+
+5. Scroll down to "Environment Variables" → Add these:
+   ┌─────────────────┬──────────────────────────────────────┐
+   │ Key             │ Value                                │
+   ├─────────────────┼──────────────────────────────────────┤
+   │ JWT_SECRET      │ sp_coaching_sagara_secret_2024       │
+   │ NODE_ENV        │ production                           │
+   │ RENDER          │ true                                 │
+   └─────────────────┴──────────────────────────────────────┘
+
+6. Click "Create Web Service"
+   Wait 3-5 minutes for it to build...
+
+7. ✅ You will get a URL like:
+   https://sp-coaching-server.onrender.com
+
+   COPY THIS URL — you need it for Step 3!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PART 3 — ADD BACKEND URL TO CLIENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. In your SP-COACHING-CENTER/client/ folder,
+   create a file named: .env.production
+
+2. Add this line (replace with YOUR Render URL):
+   REACT_APP_API_URL=https://sp-coaching-server.onrender.com
+
+3. Save the file, then push to GitHub:
+   git add .
+   git commit -m "Add production API URL"
+   git push
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PART 4 — DEPLOY FRONTEND TO VERCEL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Go to https://vercel.com → Sign in with GitHub
+
+2. Click "Add New..." → "Project"
+
+3. Find your repo "sp-coaching-center" → Click "Import"
+
+4. Fill in these settings:
+   ┌─────────────────────────────────────────────┐
+   │ Project Name:   sp-coaching-center          │
+   │ Framework:      Create React App            │
+   │ Root Directory: client         ← IMPORTANT  │
+   └─────────────────────────────────────────────┘
+
+5. Click "Environment Variables" → Add:
+   ┌──────────────────────┬──────────────────────────────────────────┐
+   │ Key                  │ Value                                    │
+   ├──────────────────────┼──────────────────────────────────────────┤
+   │ REACT_APP_API_URL    │ https://sp-coaching-server.onrender.com  │
+   └──────────────────────┴──────────────────────────────────────────┘
+   (Use YOUR actual Render URL)
+
+6. Click "Deploy"
+   Wait 2-3 minutes...
+
+7. ✅ Your app is LIVE at:
+   https://sp-coaching-center.vercel.app
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PART 5 — FIX CORS (if you see API errors after deploy)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+If you see CORS errors in browser console, go to Render →
+Your service → Environment Variables → Add:
+
+   FRONTEND_URL = https://sp-coaching-center.vercel.app
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+IMPORTANT NOTES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚠️  Render FREE tier sleeps after 15 min of inactivity.
+    First request after sleep takes ~30 seconds.
+    Upgrade to Starter ($7/mo) to avoid this.
+
+⚠️  SQLite data resets when Render redeploys (free tier).
+    Teacher logins are auto-recreated on restart.
+    For permanent student data, upgrade Render or use
+    a free database like Supabase/PlanetScale.
+
+✅  Teacher logins always work (recreated on start):
+    admin@spcoaching.com   / admin123
+    sslc@spcoaching.com    / sslc123
+    cbse@spcoaching.com    / cbse123
+    english@spcoaching.com / english123
+    comp@spcoaching.com    / comp123
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+QUICK SUMMARY OF COMMANDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Run these in your SP-COACHING-CENTER folder:
+
+  git init
+  git add .
+  git commit -m "SP Coaching Center"
+  git branch -M main
+  git remote add origin https://github.com/USERNAME/sp-coaching-center.git
+  git push -u origin main
+
+Then deploy on Render (server/) and Vercel (client/).
+
+© SP Coaching Center, S.N Nagar, Sagara, Karnataka
