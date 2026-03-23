@@ -3,14 +3,14 @@ import {useNavigate} from 'react-router-dom';
 import './Welcome.css';
 
 const COURSES=[
-  {icon:'📘',color:'#1b4fce',title:'SSLC Kannada',sub:'Board Exam Excellence',desc:'Comprehensive SSLC board preparation with model papers, chapter-wise revision, and expert mentorship tailored for Karnataka board.'},
-  {icon:'📗',color:'#0ea5e9',title:'CBSE Kannada',sub:'Language Mastery',desc:'Structured CBSE Kannada curriculum for all grades with weekly assessments, grammar focus, and literature deep-dives.'},
+  {icon:'📘',color:'#1b4fce',title:'SSLC Karnataka Board',sub:'Board Exam Excellence',desc:'Comprehensive SSLC board preparation with model papers, chapter-wise revision, and expert mentorship tailored for Karnataka board.'},
+  {icon:'📗',color:'#0ea5e9',title:'CBSE Board',sub:'Language Mastery',desc:'Structured CBSE Kannada curriculum for all grades with weekly assessments, grammar focus, and literature deep-dives.'},
   {icon:'🗣️',color:'#10b981',title:'Spoken English',sub:'Communicate Confidently',desc:'Interactive speaking sessions, grammar workshops, and real-world conversation practice to build lasting English fluency.'},
   {icon:'🏆',color:'#8b5cf6',title:'Competitive Prep',sub:'KAS · PSI · FDA · SDA',desc:'Focused coaching for government exams with current affairs, aptitude training, and previous year paper analysis.'},
 ];
 
 const STATS=[
-  {val:'500+',lbl:'Students Enrolled'},
+  {val:'50+',lbl:'Students Enrolled'},
   {val:'10+', lbl:'Years Experience'},
   {val:'95%', lbl:'Exam Pass Rate'},
   {val:'4',   lbl:'Courses Offered'},
@@ -95,7 +95,7 @@ export default function Welcome(){
           </h1>
           <p className="wh-desc anim-fade-up d2">
             Empowering students of Sagara with quality education in Kannada language, English communication,
-            and competitive exam preparation. Trusted by 500+ families from S.N Nagar and beyond.
+            and competitive exam preparation. Trusted by 50+ families from S.N Nagar and beyond.
           </p>
           <div className="wh-actions anim-fade-up d3">
             <button className="btn btn-primary btn-lg" onClick={()=>navigate('/login')}>
@@ -121,8 +121,8 @@ export default function Welcome(){
               <div className="wh-coach">Coaching</div>
             </div>
           </div>
-          <div className="wh-tag wt1 anim-fade-up d1">📘 SSLC Kannada</div>
-          <div className="wh-tag wt2 anim-fade-up d2">📗 CBSE Kannada</div>
+          <div className="wh-tag wt1 anim-fade-up d1">📘 SSLC Karnataka Board</div>
+          <div className="wh-tag wt2 anim-fade-up d2">📗 CBSE Board</div>
           <div className="wh-tag wt3 anim-fade-up d3">🗣️ Spoken English</div>
           <div className="wh-tag wt4 anim-fade-up d4">🏆 Competitive Prep</div>
         </div>
@@ -240,7 +240,7 @@ export default function Welcome(){
                     <label>Course Interested In</label>
                     <select value={query.course} onChange={e=>setQuery({...query,course:e.target.value})}>
                       <option value="">Select a course…</option>
-                      <option>SSLC Kannada</option><option>CBSE Kannada</option>
+                      <option>SSLC Karnataka Board</option><option>CBSE Board</option>
                       <option>Spoken English</option><option>Competitive Prep</option>
                     </select>
                   </div>
